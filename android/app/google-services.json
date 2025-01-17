@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "680289578611",
+    "project_id": "homeowners-8f1f7",
+    "storage_bucket": "homeowners-8f1f7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680289578611:android:89701c251b86761c924406",
+        "android_client_info": {
+          "package_name": "com.leosgroup.homeowners"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680289578611-pftj39u9356u1cicrpc7c5p36ieo3civ.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.leosgroup.homeowners",
+            "certificate_hash": "369bf012cc1ebc826f3a9961d02c668ffd18a1e6"
+          }
+        },
+        {
+          "client_id": "680289578611-j3fm8ir4m8d9i8bka19vgro3ldp60a0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN4T5iJ56RfPg6OK6G8KP3J5vKOV6aEus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680289578611-j3fm8ir4m8d9i8bka19vgro3ldp60a0q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "680289578611-o2dq0njqptgck3d0a0rglbpgljc3k222.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.leosgroup.homeowners.homeowners"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680289578611:android:c13ace8eb0fa95ec924406",
+        "android_client_info": {
+          "package_name": "com.leosgroup.homeowners.homeowners"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680289578611-udo2g95tgpm7kq23qtue2gunu4qb0qn7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.leosgroup.homeowners.homeowners",
+            "certificate_hash": "369bf012cc1ebc826f3a9961d02c668ffd18a1e6"
+          }
+        },
+        {
+          "client_id": "680289578611-j3fm8ir4m8d9i8bka19vgro3ldp60a0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN4T5iJ56RfPg6OK6G8KP3J5vKOV6aEus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680289578611-j3fm8ir4m8d9i8bka19vgro3ldp60a0q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "680289578611-o2dq0njqptgck3d0a0rglbpgljc3k222.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.leosgroup.homeowners.homeowners"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
