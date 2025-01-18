@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:homeowners/screens/forgot_password.dart';
 import 'package:homeowners/screens/tenants_sign_up.dart';
+import 'package:homeowners/screens/user_navigation.dart';
 
 import '../repository/authentication_repository.dart';
 import 'home_screen.dart';
@@ -106,7 +107,7 @@ class LoginScreen extends StatelessWidget {
                                   context: context,
                                 );
                                 if (user != null) {
-                                  Get.offAll(() => HomePage());
+                                  Get.offAll(() => UserNavigation());
                                 }
                               },
                               child: const Text(
