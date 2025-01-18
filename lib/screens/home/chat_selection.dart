@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:homeowners/screens/user_selection_page.dart';
+import 'package:homeowners/screens/home/user_selection_page.dart';
 
 import 'group_chat.dart';
 

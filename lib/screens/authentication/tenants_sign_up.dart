@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
+import 'dart:io';
+import 'package:homeowners/screens/authentication/tenants_loginscreen.dart';
 
-import 'package:homeowners/screens/tenants_loginscreen.dart';
-
-import '../repository/authentication_repository.dart';
+import '../../repository/authentication_repository.dart';
 
 class TenantsSignUpScreen extends StatefulWidget {
   const TenantsSignUpScreen({super.key});
@@ -18,6 +21,50 @@ class _TenantsSignUpScreenState extends State<TenantsSignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _fullNameController = TextEditingController();
   final AuthenticationRepository _authRepo = AuthenticationRepository();
+
+  File? _selectedFile;
+  String? _uploadedIdUrl;
+  bool _isUploading = false;
+
+  Future<void> _pickAndUploadFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      File file = File(result.files.single.path!);
+      setState(() {
+        _selectedFile = file;
+        _isUploading = true;
+      });
+
+      String userId = FirebaseAuth.instance.currentUser?.uid ?? "";
+      String filePath = 'user_ids/$userId/${result.files.single.name}';
+
+      try {
+        Reference storageRef = FirebaseStorage.instance.ref(filePath);
+        UploadTask uploadTask = storageRef.putFile(file);
+
+        TaskSnapshot snapshot = await uploadTask;
+        String downloadUrl = await snapshot.ref.getDownloadURL();
+
+        setState(() {
+          _uploadedIdUrl = downloadUrl;
+          _isUploading = false;
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('ID uploaded successfully!')),
+        );
+      } catch (e) {
+        setState(() {
+          _isUploading = false;
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Upload failed: $e')),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +156,44 @@ class _TenantsSignUpScreenState extends State<TenantsSignUpScreen> {
                         ),
                       ),
                       const SizedBox(height: 20),
+
+                      /// Upload Valid ID Section
+                      const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Upload Valid ID', style: TextStyle(fontSize: 16)),
+                      ),
+                      const SizedBox(height: 5),
+                      _isUploading
+                          ? Center(child: CircularProgressIndicator())
+                          : Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton.icon(
+                              onPressed: _pickAndUploadFile,
+                              icon: Icon(Icons.upload_file, color: Colors.white), // Add icon
+                              label: Text("Choose File"),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.indigo, // Match theme color
+                                foregroundColor: Colors.white, // Text color
+                                padding: EdgeInsets.symmetric(vertical: 15),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30), // Rounded edges
+                                ),
+                                textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          if (_uploadedIdUrl != null)
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Icon(Icons.check_circle, color: Colors.green, size: 28),
+                            ),
+                        ],
+                      ),
+
+
+                      const SizedBox(height: 20),
+
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -120,10 +205,18 @@ class _TenantsSignUpScreenState extends State<TenantsSignUpScreen> {
                             padding: const EdgeInsets.symmetric(vertical: 15),
                           ),
                           onPressed: () async {
+                            if (_uploadedIdUrl == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('Please upload a valid ID')),
+                              );
+                              return;
+                            }
+
                             await _authRepo.signUp(
                               email: _emailController.text,
                               password: _passwordController.text,
                               fullName: _fullNameController.text,
+                              idUrl: _uploadedIdUrl ?? "", // Pass Uploaded ID URL
                               context: context,
                             );
                           },
@@ -135,8 +228,8 @@ class _TenantsSignUpScreenState extends State<TenantsSignUpScreen> {
                       ),
                       const SizedBox(height: 10),
                       GestureDetector(
-                        onTap: (){
-                          Get.to(()=> LoginScreen());
+                        onTap: () {
+                          Get.to(() => LoginScreen());
                         },
                         child: Center(
                           child: Container(

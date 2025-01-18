@@ -25,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-              'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-              'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -47,29 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDN4T5iJ56RfPg6OK6G8KP3J5vKOV6aEus',
-    appId: '1:680289578611:android:c13ace8eb0fa95ec924406',
-    messagingSenderId: '680289578611',
-    projectId: 'homeowners-8f1f7',
-    storageBucket: 'homeowners-8f1f7.firebasestorage.app',
+    apiKey: 'AIzaSyAHHwkNe_Z7E00W5BbQvScS_haJ3ruvXHw',
+    appId: '1:908367980514:android:9b7820a678e31b91cbbbbb',
+    messagingSenderId: '908367980514',
+    projectId: 'homeowners-b2f46',
+    storageBucket: 'homeowners-b2f46.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBsqK1Rie1VUwDqGEQ6lIErtpepnzwIwW8',
-    appId: '1:680289578611:ios:c518aa4ebb97e693924406',
-    messagingSenderId: '680289578611',
-    projectId: 'homeowners-8f1f7',
-    storageBucket: 'homeowners-8f1f7.firebasestorage.app',
+    apiKey: 'AIzaSyCZ2n6CWO6a6xJLVnsB9ML0WOAsaNydnIo',
+    appId: '1:908367980514:ios:3753c68253d988e6cbbbbb',
+    messagingSenderId: '908367980514',
+    projectId: 'homeowners-b2f46',
+    storageBucket: 'homeowners-b2f46.firebasestorage.app',
     iosBundleId: 'com.leosgroup.homeowners.homeowners',
   );
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAlHqokUNynXKa91cDbvvZxsVS0HwEfDKw',
-    appId: '1:680289578611:web:c50532ec84918ff4924406',
-    messagingSenderId: '680289578611',
-    projectId: 'homeowners-8f1f7',
-    authDomain: 'homeowners-8f1f7.firebaseapp.com',
-    storageBucket: 'homeowners-8f1f7.firebasestorage.app',
+    apiKey: 'AIzaSyCKyTcgyY9s3p6xasJy1HFnnmDg73zZ9m8',
+    appId: '1:908367980514:web:7a6809a6c2e1027ecbbbbb',
+    messagingSenderId: '908367980514',
+    projectId: 'homeowners-b2f46',
+    authDomain: 'homeowners-b2f46.firebaseapp.com',
+    storageBucket: 'homeowners-b2f46.firebasestorage.app',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCZ2n6CWO6a6xJLVnsB9ML0WOAsaNydnIo',
+    appId: '1:908367980514:ios:3753c68253d988e6cbbbbb',
+    messagingSenderId: '908367980514',
+    projectId: 'homeowners-b2f46',
+    storageBucket: 'homeowners-b2f46.firebasestorage.app',
+    iosBundleId: 'com.leosgroup.homeowners.homeowners',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCKyTcgyY9s3p6xasJy1HFnnmDg73zZ9m8',
+    appId: '1:908367980514:web:38c465838b0d51ffcbbbbb',
+    messagingSenderId: '908367980514',
+    projectId: 'homeowners-b2f46',
+    authDomain: 'homeowners-b2f46.firebaseapp.com',
+    storageBucket: 'homeowners-b2f46.firebasestorage.app',
   );
 
 }

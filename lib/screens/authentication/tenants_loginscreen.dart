@@ -2,12 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:homeowners/screens/forgot_password.dart';
-import 'package:homeowners/screens/tenants_sign_up.dart';
+import 'package:homeowners/screens/authentication/forgot_password.dart';
+import 'package:homeowners/screens/authentication/tenants_sign_up.dart';
 import 'package:homeowners/screens/user_navigation.dart';
 
-import '../repository/authentication_repository.dart';
-import 'home_screen.dart';
+import '../../repository/authentication_repository.dart';
+import '../home/home_screen.dart';
 
 
 

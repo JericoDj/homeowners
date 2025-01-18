@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -28,12 +27,16 @@ class UserSelectionPage extends StatelessWidget {
             itemBuilder: (context, index) {
               final user = users[index];
               return ListTile(
-                title: Text(user['email']),
+                title: Text(user['fullName'] ?? 'Unknown User'), // Ensure full name is displayed
+                subtitle: Text(user['email']), // Show email as a subtitle
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => OneToOneChatPage(receiverEmail: user['email']),
+                      builder: (context) => OneToOneChatPage(
+                        receiverEmail: user['email'],
+                        receiverName: user['fullName'] ?? 'Unknown User', // Pass the receiverName
+                      ),
                     ),
                   );
                 },

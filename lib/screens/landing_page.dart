@@ -5,11 +5,11 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:homeowners/screens/tenants_loginscreen.dart';
-import 'package:homeowners/screens/tenants_sign_up.dart';
+import 'package:homeowners/screens/authentication/tenants_loginscreen.dart';
+import 'package:homeowners/screens/authentication/tenants_sign_up.dart';
 
 
-import 'chat_selection.dart';
+import 'home/chat_selection.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
