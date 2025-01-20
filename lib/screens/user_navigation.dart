@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:homeowners/screens/account/settings.dart';
 import 'emergency/emergency_screen.dart';
+import 'gemini/GeminiChat.dart';
 import 'home/home_screen.dart';
 
 
@@ -14,6 +15,7 @@ class _UserNavigationState extends State<UserNavigation> {
   int _selectedIndex = 0; // Default selected tab is Home
   final List<Widget> _screens = [
     HomePage(),
+    GeminiChatScreen(),
     EmergencyScreen(),
     AccountScreen(),
   ];
@@ -68,6 +70,13 @@ class _UserNavigationState extends State<UserNavigation> {
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',
+            ),
+            BottomNavigationBarItem(
+
+              icon: Container(
+                  height: 30,
+                  child: Image.asset("assets/images/logo/Gemini_Logo.png")),
+              label: 'Gemini',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.warning),
